@@ -5,6 +5,8 @@ import 'package:doctor_appointment_app/data/model/category.dart';
 import 'package:doctor_appointment_app/data/model/doctor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -105,6 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               flex: 12,
               child: ListView.builder(
+                reverse: true,
                 scrollDirection: Axis.horizontal,
                 physics: RangeMaintainingScrollPhysics(),
                 itemCount: doctor_list.length,
@@ -121,17 +124,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Categories',
+                      'دیدن همه',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         color: Colors.grey[800],
                       ),
                     ),
                     Text(
-                      'See All',
+                      'دسته بندی ها',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         color: Colors.grey[800],
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -141,33 +145,11 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               flex: 8,
               child: ListView.builder(
+                reverse: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: categories.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: MediaQuery.of(context).size.width * 23 / 100,
-                    margin: EdgeInsets.all(14),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/icons/${categories[index].image}',
-                          width: 35,
-                        ),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          categories[index].name,
-                          style: TextStyle(fontSize: 10),
-                        ),
-                      ],
-                    ),
-                  );
+                  return _getCategoryCard(categories[index], index);
                 },
               ),
             ),
@@ -179,17 +161,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Avialable Doctor',
+                      'دیدن همه',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         color: Colors.grey[800],
                       ),
                     ),
                     Text(
-                      'See All',
+                      'دکتر های در دسترس',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         color: Colors.grey[800],
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -198,7 +181,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Expanded(
               flex: 13,
-              child: Text(''),
+              child: ListView.builder(
+                reverse: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: doctor_list.length,
+                itemBuilder: (context, index) {
+                  return _getAvailableDoctorCard(doctor_list[index], index);
+                },
+              ),
             ),
             Expanded(
               flex: 2,
@@ -248,10 +238,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       width: MediaQuery.of(context).size.width / 100 * 84,
       margin: EdgeInsets.only(
-        left: index == 0
+        left: index == doctor_list.length - 1
             ? MediaQuery.of(context).size.width / 100 * 8
             : MediaQuery.of(context).size.width / 100 * 2,
-        right: index == doctor_list.length - 1
+        right: index == 0
             ? MediaQuery.of(context).size.width / 100 * 8
             : MediaQuery.of(context).size.width / 100 * 2,
       ),
@@ -326,6 +316,138 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _getAvailableDoctorCard(Doctor doctor, int index) {
+    return Container(
+      height: double.infinity,
+      margin: EdgeInsets.only(
+        left: index == doctor_list.length - 1 ? 16 : 8,
+        right: index == 0 ? 16 : 8,
+        top: 2,
+        bottom: 2,
+      ),
+      width: MediaQuery.of(context).size.width * 72 / 100,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 20),
+            child: Image.asset('assets/images/${doctor.image_name}'),
+          ),
+          Padding(
+            padding: EdgeInsets.only(right: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 16),
+                  child: Text(
+                    '${doctor.name}',
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    '${doctor.special}',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: textColor,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: RatingBar.builder(
+                      initialRating: doctor.stars,
+                      allowHalfRating: true,
+                      ignoreGestures: true,
+                      itemCount: 5,
+                      itemSize: 12,
+                      itemBuilder: (context, _) => Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                      onRatingUpdate: (rating) {
+                        print('rating');
+                      }),
+                ),
+                Text(
+                  'کلینیک',
+                  style: TextStyle(
+                    fontSize: 9,
+                  ),
+                ),
+                Text(
+                  '${doctor.office_type}',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  'بازدید ها',
+                  style: TextStyle(
+                    fontSize: 9,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 16),
+                  child: Text(
+                    '${doctor.views}',
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _getCategoryCard(CategoryDoctor category, int index) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 24 / 100,
+      margin: EdgeInsets.only(
+        right: index == 0 ? 14 : 7,
+        left: index == categories.length - 1 ? 14 : 7,
+        top: 10,
+        bottom: 10,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            'assets/icons/${category.image}',
+            width: 38,
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Text(
+            category.name,
+            style: TextStyle(fontSize: 10),
+          ),
+        ],
       ),
     );
   }

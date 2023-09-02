@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:doctor_appointment_app/constants.dart';
 import 'package:doctor_appointment_app/data/model/category.dart';
 import 'package:doctor_appointment_app/data/model/doctor.dart';
+import 'package:doctor_appointment_app/screens/doctor_profile_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,6 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
         'خیابان امام، کوچه برخوردار، پلاک سیزده',
         'کلینیک سلامتی خوب',
         'Salina_Zaman.png',
+        'Salina_Zaman.png',
+        'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. ',
         2501,
         4.2,
       ),
@@ -47,6 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
         'خیابان امام، کوچه برخوردار، پلاک سیزده',
         'کلینیک سلامتی خوب',
         'Salina_Zaman.png',
+        'Salina_Zaman.png',
+        'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. ',
         2501,
         4.2,
       ),
@@ -58,7 +63,22 @@ class _HomeScreenState extends State<HomeScreen> {
         'خیابان امام، کوچه برخوردار، پلاک سیزده',
         'کلینیک سلامتی خوب',
         'Salina_Zaman.png',
+        'Salina_Zaman.png',
+        'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. ',
         2501,
+        4.2,
+      ),
+    );
+    doctor_list.add(
+      Doctor(
+        'دکتر سرنا گومز',
+        'متخصص پزشکی',
+        'خیابان امام، کوچه برخوردار، پلاک سیزده',
+        'کلینیک سلامتی خوب',
+        'Serena_Gome.png',
+        'doctor_big_preview.png',
+        'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. ',
+        2051,
         4.2,
       ),
     );
@@ -321,101 +341,112 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _getAvailableDoctorCard(Doctor doctor, int index) {
-    return Container(
-      height: double.infinity,
-      margin: EdgeInsets.only(
-        left: index == doctor_list.length - 1 ? 16 : 8,
-        right: index == 0 ? 16 : 8,
-        top: 2,
-        bottom: 2,
-      ),
-      width: MediaQuery.of(context).size.width * 72 / 100,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 20),
-            child: Image.asset('assets/images/${doctor.image_name}'),
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DoctorProfileScreen(doctor1: doctor),
           ),
-          Padding(
-            padding: EdgeInsets.only(right: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 16),
-                  child: Text(
-                    '${doctor.name}',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.bold,
+        );
+      },
+      child: Container(
+        height: double.infinity,
+        margin: EdgeInsets.only(
+          left: index == doctor_list.length - 1 ? 16 : 8,
+          right: index == 0 ? 16 : 8,
+          top: 2,
+          bottom: 2,
+        ),
+        width: MediaQuery.of(context).size.width * 72 / 100,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child: Image.asset('assets/images/${doctor.image_name}'),
+            ),
+            Padding(
+              padding: EdgeInsets.only(right: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 16),
+                    child: Text(
+                      '${doctor.name}',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    '${doctor.special}',
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      '${doctor.special}',
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: textColor,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: RatingBar.builder(
+                        initialRating: doctor.stars,
+                        textDirection: TextDirection.rtl,
+                        allowHalfRating: true,
+                        ignoreGestures: true,
+                        itemCount: 5,
+                        itemSize: 12,
+                        itemBuilder: (context, _) => Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                        onRatingUpdate: (rating) {
+                          print('rating');
+                        }),
+                  ),
+                  Text(
+                    'کلینیک',
+                    style: TextStyle(
+                      fontSize: 9,
+                    ),
+                  ),
+                  Text(
+                    '${doctor.office_type}',
                     style: TextStyle(
                       fontSize: 10,
-                      color: textColor,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: RatingBar.builder(
-                      initialRating: doctor.stars,
-                      allowHalfRating: true,
-                      ignoreGestures: true,
-                      itemCount: 5,
-                      itemSize: 12,
-                      itemBuilder: (context, _) => Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                      onRatingUpdate: (rating) {
-                        print('rating');
-                      }),
-                ),
-                Text(
-                  'کلینیک',
-                  style: TextStyle(
-                    fontSize: 9,
-                  ),
-                ),
-                Text(
-                  '${doctor.office_type}',
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 8),
-                Text(
-                  'بازدید ها',
-                  style: TextStyle(
-                    fontSize: 9,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 16),
-                  child: Text(
-                    '${doctor.views}',
-                    style: TextStyle(
-                      fontSize: 12,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
-              ],
+                  SizedBox(height: 8),
+                  Text(
+                    'بازدید ها',
+                    style: TextStyle(
+                      fontSize: 9,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 16),
+                    child: Text(
+                      '${doctor.views}',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

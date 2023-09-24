@@ -217,40 +217,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        color: Colors.white,
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 24),
-        child: Directionality(
-          textDirection: TextDirection.rtl,
-          child: GNav(
-            iconSize: 20,
-            tabBackgroundColor: primaryColor,
-            activeColor: Colors.white,
-            // curve: Curves.ease,
-            tabBorderRadius: 12,
-            gap: 8,
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-            tabs: [
-              GButton(
-                icon: Icons.home,
-                text: 'خانه',
-              ),
-              GButton(
-                icon: Icons.people,
-                text: 'دکتر ها',
-              ),
-              GButton(
-                icon: Icons.badge_outlined,
-                text: 'وقت ملاقات',
-              ),
-              GButton(
-                icon: Icons.person,
-                text: 'پروفایل',
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 

@@ -1,5 +1,6 @@
 import 'package:doctor_appointment_app/screens/doctor_profile_screen.dart';
 import 'package:doctor_appointment_app/screens/home_screen.dart';
+import 'package:doctor_appointment_app/screens/welcome_screen.dart';
 import 'package:doctor_appointment_app/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'iranSans'),
       debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+      home: WelcomeScreen(),
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'package:doctor_appointment_app/screens/sign_in_screen.dart';
+import 'package:doctor_appointment_app/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -27,7 +29,15 @@ class WelcomeScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //Go to Sign up Screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignUpScreen(),
+                        ),
+                      );
+                    },
                     child: Text(
                       'Sign Up',
                       style: TextStyle(fontSize: 18),
@@ -42,7 +52,15 @@ class WelcomeScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //Go to Sign in screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignInScreen(),
+                        ),
+                      );
+                    },
                     child: Text(
                       'Sign in',
                       style: TextStyle(fontSize: 18, color: Colors.white),

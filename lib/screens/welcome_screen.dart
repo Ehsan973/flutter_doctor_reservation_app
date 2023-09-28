@@ -1,3 +1,4 @@
+import 'package:doctor_appointment_app/constants.dart';
 import 'package:doctor_appointment_app/screens/sign_in_screen.dart';
 import 'package:doctor_appointment_app/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,53 @@ class WelcomeScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: Center(
-                    child: Text('Pezeshkyar'),
+                    child: Container(
+                      height: 160,
+                      width: 160,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Color.fromARGB(120, 255, 149, 0),
+                            // primaryColor,
+                            Color.fromARGB(100, 0, 245, 253),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Center(
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Text(
+                              'PY',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 50,
+                                // color: primaryColor,
+                                // fontWeight: FontWeight.bold,
+                                letterSpacing: 5,
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = 2.5
+                                  ..color = primaryColor,
+                              ),
+                            ),
+                            Text(
+                              'PY',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 50,
+                                letterSpacing: 5,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(

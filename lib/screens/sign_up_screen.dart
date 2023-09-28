@@ -1,5 +1,6 @@
 import 'package:doctor_appointment_app/constants.dart';
 import 'package:doctor_appointment_app/screens/sign_in_screen.dart';
+import 'package:doctor_appointment_app/widgets/form_text_field.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -45,13 +46,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     );
                   },
-                  child: Text('Sign in'),
+                  child: Text('Sign in!'),
                 ),
               ],
             ),
           ),
-          _getTextField('Full Name'),
-          _getTextField('Phone Number'),
+          FormTextField(text: 'Full Name'),
+          FormTextField(text: 'Phone Number'),
           Spacer(),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
@@ -64,47 +65,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 55),
+                minimumSize: Size(double.infinity, 50),
               ),
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _getTextField(String text) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      child: TextField(
-        decoration: InputDecoration(
-          label: Text(
-            text,
-          ),
-          labelStyle: TextStyle(
-            fontSize: 16,
-            color: Colors.grey,
-          ),
-          contentPadding: EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 16,
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              width: 1,
-              color: Colors.grey,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              width: 1,
-              color: primaryColor,
-            ),
-          ),
-          floatingLabelStyle: TextStyle(
-            fontSize: 16,
-          ),
-        ),
       ),
     );
   }

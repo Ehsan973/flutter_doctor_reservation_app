@@ -1,4 +1,9 @@
+import 'package:doctor_appointment_app/screens/forget_password_screen.dart';
+import 'package:doctor_appointment_app/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../constants.dart';
+import '../widgets/form_text_field.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -10,6 +15,82 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leadingWidth: 150,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16, top: 12),
+          child: Text(
+            'Sign In',
+            style: TextStyle(
+              color: textColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+            ),
+          ),
+        ),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: 16, bottom: 8),
+            child: Row(
+              children: [
+                Text('Already have an account?'),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpScreen(),
+                      ),
+                    );
+                  },
+                  child: Text('Sign up!'),
+                ),
+              ],
+            ),
+          ),
+          FormTextField(text: 'Username'),
+          FormTextField(text: 'Password'),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ForgetPasswordScreen(),
+                ),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Text(
+                'Forget your Password?',
+                style: TextStyle(color: primaryColor),
+              ),
+            ),
+          ),
+          Spacer(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+            child: ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                'Sing In',
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(double.infinity, 50),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -82,7 +82,7 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
               ),
               SizedBox(height: 24),
               Text(
-                'درباره ${doctor!.name}',
+                isArabic ? 'عن ${doctor!.name}' : 'درباره ${doctor!.name}',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               SizedBox(
@@ -115,7 +115,9 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                       backgroundColor: primaryColor,
                       minimumSize: Size(double.infinity, 45)),
                   onPressed: () {},
-                  child: Text('قرار ملاقات رزرو کنید'),
+                  child: Text(
+                    isArabic ? 'حجز موعد' : 'قرار ملاقات رزرو کنید',
+                  ),
                 ),
               )
             ],
@@ -145,7 +147,7 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                   width: 4,
                 ),
                 Text(
-                  'تماس صوتی',
+                  isArabic ? 'مکالمة صوتیة' : 'تماس صوتی',
                   style: TextStyle(
                     fontSize: 10,
                   ),
@@ -175,7 +177,7 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                   width: 4,
                 ),
                 Text(
-                  'تماس ویدئویی',
+                  isArabic ? 'مکالمة فیدیو' : 'تماس ویدئویی',
                   style: TextStyle(
                     fontSize: 10,
                   ),
@@ -206,7 +208,7 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                   width: 4,
                 ),
                 Text(
-                  'پیام متنی',
+                  isArabic ? 'محادثة نصیة' : 'پیام متنی',
                   style: TextStyle(
                     fontSize: 10,
                   ),

@@ -15,81 +15,88 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leadingWidth: 150,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 16, top: 12),
-          child: Text(
-            'Sign In',
-            style: TextStyle(
-              color: textColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 30,
+    return Directionality(
+      textDirection: isArabic ? TextDirection.rtl : TextDirection.ltr,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leadingWidth: 250,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 16, top: 12, right: 16),
+            child: Text(
+              isArabic ? 'تسجیل الدخول' : 'Sign in',
+              style: TextStyle(
+                color: textColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
             ),
           ),
         ),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(left: 16, bottom: 8),
-            child: Row(
-              children: [
-                Text('Already have an account?'),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SignUpScreen(),
-                      ),
-                    );
-                  },
-                  child: Text('Sign up!'),
-                ),
-              ],
-            ),
-          ),
-          FormTextField(text: 'Username'),
-          FormTextField(text: 'Password'),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ForgetPasswordScreen(),
-                ),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Text(
-                'Forget your Password?',
-                style: TextStyle(color: primaryColor),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 16, bottom: 8, right: 16),
+              child: Row(
+                children: [
+                  Text(
+                    isArabic ? 'هل لدیک حسابا؟' : 'Already have an account?',
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignUpScreen(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      isArabic ? 'أنشئ حساباً!' : 'Sign Up!',
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-          Spacer(),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                'Sing In',
-                style: TextStyle(
-                  fontSize: 16,
+            FormTextField(text: isArabic ? 'رقم الجوال' : 'Phone Number'),
+            FormTextField(text: isArabic ? 'کلمة المرور' : 'Password'),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ForgetPasswordScreen(),
+                  ),
+                );
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Text(
+                  isArabic ? 'نسیت کلمة المرور؟' : 'Forget your Password?',
+                  style: TextStyle(color: primaryColor),
                 ),
               ),
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
+            ),
+            Spacer(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  isArabic ? 'سجّل الدخول' : 'Sign in',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(double.infinity, 50),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

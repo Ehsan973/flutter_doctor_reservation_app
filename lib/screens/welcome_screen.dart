@@ -1,4 +1,5 @@
 import 'package:doctor_appointment_app/constants.dart';
+import 'package:doctor_appointment_app/screens/main_screen.dart';
 import 'package:doctor_appointment_app/screens/sign_in_screen.dart';
 import 'package:doctor_appointment_app/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +87,7 @@ class WelcomeScreen extends StatelessWidget {
                       );
                     },
                     child: Text(
-                      'Sign Up',
+                      isArabic ? 'أنشئ حساباً' : 'Sign Up',
                       style: TextStyle(fontSize: 18),
                     ),
                     style: ElevatedButton.styleFrom(
@@ -109,7 +110,7 @@ class WelcomeScreen extends StatelessWidget {
                       );
                     },
                     child: Text(
-                      'Sign in',
+                      isArabic ? 'سجّل الدخول' : 'Sign in',
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     style: OutlinedButton.styleFrom(
@@ -122,7 +123,24 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 10,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MainScreen(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    isArabic ? 'انتقل إلی الرئیسیة' : 'skip to home',
+                    style: TextStyle(color: backgroundColor),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
               ],
             ),

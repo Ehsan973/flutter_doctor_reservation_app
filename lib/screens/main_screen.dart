@@ -37,19 +37,19 @@ class _MainScreenState extends State<MainScreen> {
               tabs: [
                 GButton(
                   icon: Icons.home,
-                  text: 'خانه',
+                  text: isArabic ? 'الرئیسیة' : 'خانه',
                 ),
                 GButton(
                   icon: Icons.people,
-                  text: 'دکتر ها',
+                  text: isArabic ? 'الأطباء' : 'دکتر ها',
                 ),
                 GButton(
                   icon: Icons.badge_outlined,
-                  text: 'وقت ملاقات',
+                  text: isArabic ? 'تعیینات' : 'وقت ملاقات',
                 ),
                 GButton(
                   icon: Icons.person,
-                  text: 'پروفایل',
+                  text: isArabic ? 'حساب تعریفي' : 'پروفایل',
                 ),
               ],
               onTabChange: (index) {

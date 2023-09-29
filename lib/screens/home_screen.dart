@@ -26,19 +26,41 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    categories.add(CategoryDoctor('متخصص اطفال', 'Pediatrician.svg'));
-    categories.add(CategoryDoctor('جراح مغز و اعصاب', 'Neurosurgeon.svg'));
-    categories.add(CategoryDoctor('متخصص قلب', 'Cardiologist.svg'));
-    categories.add(CategoryDoctor('روانپزشک', 'Psychiatrist.svg'));
+    categories.add(
+      CategoryDoctor(
+        isArabic ? 'طبیب الأطفال' : 'متخصص اطفال',
+        'Pediatrician.svg',
+      ),
+    );
+    categories.add(
+      CategoryDoctor(
+        isArabic ? 'جراح الأعصاب' : 'جراح مغز و اعصاب',
+        'Neurosurgeon.svg',
+      ),
+    );
+    categories.add(
+      CategoryDoctor(
+        isArabic ? 'اخصائي القلب' : 'متخصص قلب',
+        'Cardiologist.svg',
+      ),
+    );
+    categories.add(
+      CategoryDoctor(
+        isArabic ? 'طبیب نفسی' : 'روانپزشک',
+        'Psychiatrist.svg',
+      ),
+    );
     doctor_list.add(
       Doctor(
         'دکتر سالینا زمان',
-        'متخصص پزشکی و قلب',
+        isArabic ? 'اخصائي الطب و القلب' : 'متخصص پزشکی و قلب',
         'خیابان امام، کوچه برخوردار، پلاک سیزده',
         'کلینیک سلامتی خوب',
         'Salina_Zaman.png',
         'Salina_Zaman.png',
-        'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. ',
+        isArabic
+            ? 'هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات محرجة أو غير لائقة مخبأة في هذا النص.'
+            : 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. ',
         2501,
         4.2,
       ),
@@ -46,12 +68,14 @@ class _HomeScreenState extends State<HomeScreen> {
     doctor_list.add(
       Doctor(
         'دکتر سالینا زمان',
-        'متخصص پزشکی و قلب',
+        isArabic ? 'اخصائي الطب و القلب' : 'متخصص پزشکی و قلب',
         'خیابان امام، کوچه برخوردار، پلاک سیزده',
         'کلینیک سلامتی خوب',
         'Salina_Zaman.png',
         'Salina_Zaman.png',
-        'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. ',
+        isArabic
+            ? 'هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات محرجة أو غير لائقة مخبأة في هذا النص.'
+            : 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. ',
         2501,
         4.2,
       ),
@@ -59,12 +83,14 @@ class _HomeScreenState extends State<HomeScreen> {
     doctor_list.add(
       Doctor(
         'دکتر سالینا زمان',
-        'متخصص پزشکی و قلب',
+        isArabic ? 'اخصائي الطب و القلب' : 'متخصص پزشکی و قلب',
         'خیابان امام، کوچه برخوردار، پلاک سیزده',
         'کلینیک سلامتی خوب',
         'Salina_Zaman.png',
         'Salina_Zaman.png',
-        'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. ',
+        isArabic
+            ? 'هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات محرجة أو غير لائقة مخبأة في هذا النص.'
+            : 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. ',
         2501,
         4.2,
       ),
@@ -72,12 +98,14 @@ class _HomeScreenState extends State<HomeScreen> {
     doctor_list.add(
       Doctor(
         'دکتر سرنا گومز',
-        'متخصص پزشکی',
+        isArabic ? 'اخصائي الطب' : 'متخصص پزشکی',
         'خیابان امام، کوچه برخوردار، پلاک سیزده',
         'کلینیک سلامتی خوب',
         'Serena_Gome.png',
         'doctor_big_preview.png',
-        'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. ',
+        isArabic
+            ? 'هنالك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض النوادر أو الكلمات العشوائية إلى النص. إن كنت تريد أن تستخدم نص لوريم إيبسوم ما، عليك أن تتحقق أولاً أن ليس هناك أي كلمات أو عبارات محرجة أو غير لائقة مخبأة في هذا النص.'
+            : 'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. ',
         2051,
         4.2,
       ),
@@ -144,14 +172,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'دیدن همه',
+                      isArabic ? 'عرض الکل' : 'دیدن همه',
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[800],
                       ),
                     ),
                     Text(
-                      'دسته بندی ها',
+                      isArabic ? 'فئات' : 'دسته بندی ها',
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[800],
@@ -181,14 +209,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'دیدن همه',
+                      isArabic ? 'عرض الکل' : 'دیدن همه',
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[800],
                       ),
                     ),
                     Text(
-                      'دکتر های در دسترس',
+                      isArabic ? 'الأطباء المتاحین' : 'دکتر های در دسترس',
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[800],
@@ -221,86 +249,98 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _getRecommendedCard(Doctor doctor, int index) {
-    return Container(
-      width: MediaQuery.of(context).size.width / 100 * 84,
-      margin: EdgeInsets.only(
-        left: index == doctor_list.length - 1
-            ? MediaQuery.of(context).size.width / 100 * 8
-            : MediaQuery.of(context).size.width / 100 * 2,
-        right: index == 0
-            ? MediaQuery.of(context).size.width / 100 * 8
-            : MediaQuery.of(context).size.width / 100 * 2,
-      ),
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: primaryColor,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Padding(
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DoctorProfileScreen(doctor1: doctor),
+          ),
+        );
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width / 100 * 84,
+        margin: EdgeInsets.only(
+          left: index == doctor_list.length - 1
+              ? MediaQuery.of(context).size.width / 100 * 8
+              : MediaQuery.of(context).size.width / 100 * 2,
+          right: index == 0
+              ? MediaQuery.of(context).size.width / 100 * 8
+              : MediaQuery.of(context).size.width / 100 * 2,
+        ),
         padding: EdgeInsets.all(8),
-        child: Row(
-          textDirection: TextDirection.rtl,
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  Text(
-                    'آیا به دنبال متخصص مورد نظر خود می گردید؟',
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  Expanded(child: SizedBox()),
-                  Row(
-                    textDirection: TextDirection.rtl,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(bottom: 1.5),
+        decoration: BoxDecoration(
+          color: primaryColor,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(8),
+          child: Row(
+            textDirection: TextDirection.rtl,
+            children: [
+              Expanded(
+                child: Column(
+                  children: [
+                    Text(
+                      isArabic
+                          ? 'تحدث مع الطبیب المعتمد الآن'
+                          : 'آیا به دنبال متخصص مورد نظر خود می گردید؟',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(
                         color: Colors.white,
-                        width: 2,
-                        height: 57,
                       ),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            '${doctor.name}',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
+                    ),
+                    Expanded(child: SizedBox()),
+                    Row(
+                      textDirection: TextDirection.rtl,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(bottom: 1.5),
+                          color: Colors.white,
+                          width: 2,
+                          height: 57,
+                        ),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              '${doctor.name}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          Text(
-                            '${doctor.special}',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
+                            Text(
+                              '${doctor.special}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
                             ),
-                          ),
-                          Text(
-                            '${doctor.office_type}',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
+                            Text(
+                              '${doctor.office_type}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
+                          ],
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
-            ),
-            Image(
-              image: AssetImage('assets/images/${doctor.image_name}'),
-            )
-          ],
+              Image(
+                image: AssetImage('assets/images/${doctor.image_name}'),
+              )
+            ],
+          ),
         ),
       ),
     );
